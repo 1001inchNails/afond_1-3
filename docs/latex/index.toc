@@ -4,4 +4,8 @@
 \contentsline {section}{\numberline {3}API}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Endpoints}{5}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}/create}{5}{subsubsection.3.1.1}%
-\contentsline {section}{\numberline {4}Historias de usuario}{5}{section.4}%
+\contentsline {subsubsection}{\numberline {3.1.2}/read}{5}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}/update}{6}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}/delete}{6}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}/readall}{7}{subsubsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.2}nueva sub section APIS}{7}{subsection.3.2}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.26)  17 OCT 2025 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.26)  17 OCT 2025 20:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -440,13 +440,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 
-Overfull \hbox (0.48593pt too wide) in paragraph at lines 89--101
-[]\OT1/cmr/m/n/12 Body: [] 
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
  []
 
 
-Overfull \hbox (13.67804pt too wide) in paragraph at lines 102--115
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
  []
 
 
@@ -455,15 +470,134 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
  []
 
 
-Overfull \hbox (130.58961pt too wide) in paragraph at lines 120--133
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+
+Overfull \hbox (102.80986pt too wide) in paragraph at lines 124--133
 [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
+Overfull \hbox (53.19511pt too wide) in paragraph at lines 136--147
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--147
+
  []
 
 
 
 [5
 
-] (index.aux
+]
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--195
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
+
+ []
+
+
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+
+ []
+
+
+Overfull \hbox (196.60474pt too wide) in paragraph at lines 215--226
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--226
+
+ []
+
+
+
+[7] (index.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -472,20 +606,20 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `index.out' has not changed.
-(rerunfilecheck)             Checksum: C8F1D6E509E0608886116BB58FD870E2;648.
+(rerunfilecheck)             Checksum: 501E24ECBC3FC57234FC148669BCBC24;1079.
  ) 
 Here is how much of TeX's memory you used:
- 10472 strings out of 468130
- 165950 string characters out of 5429181
- 594510 words of memory out of 5000000
- 38972 multiletter control sequences out of 15000+600000
+ 10483 strings out of 468130
+ 166140 string characters out of 5429181
+ 596516 words of memory out of 5000000
+ 38977 multiletter control sequences out of 15000+600000
  632810 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,7n,67p,289b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 63i,7n,67p,290b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\danielcc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1440.pk><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on index.pdf (5 pages, 68800 bytes).
+Output written on index.pdf (7 pages, 74902 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 122 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

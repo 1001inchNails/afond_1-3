@@ -84,9 +84,12 @@ Al ser una API pequeña tiene un funcionamiento muy simple, se odupa de llevar a
 \subsection{Endpoints}
 
 \subsubsection{/create}
-Tipo: POST
+Crea una nueva ficha en la base de datos. Crea el índice automáticamente.\\
 
-Body:
+Tipo: POST\\
+
+Body:\\
+
 \begin{tabular}{|c|c|c|}
     \hline
     \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
@@ -95,42 +98,132 @@ Body:
     \hline
     clase & String & Nombre la clase del personaje de la ficha\\ 
     \hline
-    HP & String & Hit points del personaje de la ficha\\ 
+    HP & int & Hit points del personaje de la ficha\\ 
+    \hline
+\end{tabular}\\
 
+Respuesta:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    type & String & success / failure\\ 
+    \hline
+    message & String & Mensaje de éxito o fallo\\ 
+    \hline
 \end{tabular}
 
-\begin{tabular}{ |c|c| } 
- \hline
- \textbf{Casos de uso} & \textbf{Descripción} \\ 
- \hline
- Envío de datos & Añadir nuevas fichas a la base de datos\\ 
- \hline
- Recepción de datos & Buscar y ver fichas en la base de datos\\
- \hline
- Modificación de datos & Buscar y modificar una ficha en la base de datos\\
- \hline
- Borrado de datos & Buscar y eliminar una ficha en la base de datos\\
- \hline
-\end{tabular}
+\subsubsection{/read}
+Devuelve un documento en concreto.\\
 
+Tipo: POST\\
 
-\section{Historias de usuario}
-\hyperlink{anchor-indice}{\textbf{Volver}}\\
+Body:\\
 
-\begin{tabular}{ |c|c|c|c| } 
- \hline
- \textbf{ID} & \textbf{Como} & \textbf{Quiero} & \textbf{Para} \\ 
- \hline
- HU-01 & Admin & Enviar nuevas fichas & Ampliar la base de datos\\ 
- \hline
- HU-02 & Admin & Ver fichas existentes & Ver la información actual\\
- \hline
- HU-03 & Admin & Modificar fichas & Asegurar la integridad y fiabilidad de los datos\\
- \hline
- HU-04 & Admin & Borrar fichas & Liberar la base de datos de información desactualizada\\
- \hline
-\end{tabular}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    filtroKey & String & Clave a buscar en base de datos\\ 
+    \hline
+    filtroValue & String & Valor que va a buscar usando la clave para recuperar el documento\\ 
+    \hline
+\end{tabular}\\
 
+Respuesta:\\
 
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    type & String & success / failure\\ 
+    \hline
+    message & String & Mensaje de éxito o fallo\\ 
+    \hline
+    data & Objeto JSON & Datos del documento encontrado (si lo encuentra)\\ 
+    \hline
+\end{tabular}\\
+
+\subsubsection{/update}
+Modifica un documento en concreto.\\
+
+Tipo: POST\\
+
+Body:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    indice & int & Indice interno en base de datos de la ficha\\ 
+    \hline
+    nombre & String & Nombre del personaje de la ficha\\ 
+    \hline
+    clase & String & Nombre la clase del personaje de la ficha\\ 
+    \hline
+    HP & int & Hit points del personaje de la ficha\\ 
+    \hline
+\end{tabular}\\
+
+Respuesta:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    type & String & success / failure\\ 
+    \hline
+    message & String & Mensaje de éxito o fallo\\ 
+    \hline
+\end{tabular}\\
+
+\subsubsection{/delete}
+Borra un documento en concreto.\\
+
+Tipo: POST\\
+
+Body:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    indice & int & Indice interno en base de datos de la ficha\\ 
+    \hline
+\end{tabular}\\
+
+Respuesta:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    type & String & success / failure\\ 
+    \hline
+    message & String & Mensaje de éxito o fallo\\ 
+    \hline
+\end{tabular}\\
+
+\subsubsection{/readall}
+Devuelve todos los documentos de la base de datos.\\
+
+Tipo: GET\\
+
+Respuesta:\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
+    \hline
+    type & String & success / failure\\ 
+    \hline
+    message & String & Mensaje de éxito o fallo\\ 
+    \hline
+    data & Array de objetos JSON & Lista de todos los documentos de la base de datos (si los encuentra)\\ 
+    \hline
+\end{tabular}\\
+
+\subsection{nueva sub section APIS}
 
 \end{document}
