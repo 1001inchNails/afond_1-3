@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.26)  17 OCT 2025 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.26)  17 OCT 2025 19:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -440,17 +440,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 
-Overfull \hbox (13.67804pt too wide) in paragraph at lines 91--104
+Overfull \hbox (0.48593pt too wide) in paragraph at lines 89--101
+[]\OT1/cmr/m/n/12 Body: [] 
+ []
+
+
+Overfull \hbox (13.67804pt too wide) in paragraph at lines 102--115
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 
-Overfull \hbox (130.58961pt too wide) in paragraph at lines 109--122
+Overfull \hbox (130.58961pt too wide) in paragraph at lines 120--133
 [][] 
  []
 
@@ -467,7 +472,7 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `index.out' has not changed.
-(rerunfilecheck)             Checksum: 1E3AE18DE5A7F63292BDC2B8A973D018;605.
+(rerunfilecheck)             Checksum: C8F1D6E509E0608886116BB58FD870E2;648.
  ) 
 Here is how much of TeX's memory you used:
  10472 strings out of 468130
@@ -478,7 +483,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  63i,7n,67p,289b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\danielcc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1440.pk><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/danielcc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on index.pdf (5 pages, 67618 bytes).
+Output written on index.pdf (5 pages, 68800 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  14 named destinations out of 1000 (max. 500000)
