@@ -1,0 +1,125 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pmboxdraw}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\graphicspath{{../img/}}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    urlcolor = cyan
+}
+
+\title{\textbf{Afondamento nas Competencias Profesionais}\\[1em]\textbf{Actividad 1.3 - Arquitectura}\\[1em]Análisis de código: Express API}
+\author{Daniel Calvar Cruz, 2ºCS DAM}
+\date{}
+
+\begin{document}
+
+\maketitle
+\clearpage
+\hypertarget{anchor-indice}{}
+\tableofcontents
+\newpage
+
+\section{Descripción general}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+Es una API basada en el modelo estándar de aplicaciones web, derivado del clásico Vista-Controlador.
+
+Al ser una API pequeña tiene un funcionamiento muy simple, se odupa de llevar a cabo acciones CRUD con una base de datos Mongodb y devolver al frontend los datos pertinentes.
+
+
+\section{Estructura}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\begin{verbatim}
+    ├── api/
+│   ├── config/
+│   │   └── ddbb.js
+│   ├── controllers/
+│   │   └── crudController.js
+│   ├── middlewares/
+│   │   └── cors.js
+│   ├── models/
+│   │   ├── Module.js
+│   │   └── index.js
+│   ├── routes/
+│   │   ├── crud.js
+│   │   └── index.js
+│   ├── services/
+│   │   └── crudServices.js
+│   ├── app.js
+│   └── server.js
+├── node_modules
+├── package-lock.json
+├── package.json
+└── vercel.json
+\end{verbatim}
+
+\begin{itemize}
+    \item (root) node-modules: paquetes de node.
+    \item (root) package-lock.json: archivo de configuración.
+    \item (root) package.json: archivo de configuración.
+    \item (root) vercel.json: archivo de configuración vercel.
+    \item (api) config: conexión a base de datos.
+    \item (api) middlewares: middlewares del sistema.
+    \item (api) models: interfaces de Mongoose.
+    \item (api) routes: rutas de entrada de los endpoints.
+    \item (api) controllers: enlaza las rutas de entrada con los servicios.
+    \item (api) services: lógica de negocio.
+    \item (api root) app: configuración del servidor Express.
+    \item (api root) server: punto de entrada y conexión del servidor.
+\end{itemize}
+
+
+\clearpage
+
+\section{API}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\subsection{Endpoints}
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\subsubsection{}
+
+\begin{tabular}{ |c|c| } 
+ \hline
+ \textbf{Casos de uso} & \textbf{Descripción} \\ 
+ \hline
+ Envío de datos & Añadir nuevas fichas a la base de datos\\ 
+ \hline
+ Recepción de datos & Buscar y ver fichas en la base de datos\\
+ \hline
+ Modificación de datos & Buscar y modificar una ficha en la base de datos\\
+ \hline
+ Borrado de datos & Buscar y eliminar una ficha en la base de datos\\
+ \hline
+\end{tabular}
+
+
+\section{Historias de usuario}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ \textbf{ID} & \textbf{Como} & \textbf{Quiero} & \textbf{Para} \\ 
+ \hline
+ HU-01 & Admin & Enviar nuevas fichas & Ampliar la base de datos\\ 
+ \hline
+ HU-02 & Admin & Ver fichas existentes & Ver la información actual\\
+ \hline
+ HU-03 & Admin & Modificar fichas & Asegurar la integridad y fiabilidad de los datos\\
+ \hline
+ HU-04 & Admin & Borrar fichas & Liberar la base de datos de información desactualizada\\
+ \hline
+\end{tabular}
+
+
+
+\end{document}
