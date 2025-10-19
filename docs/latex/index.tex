@@ -13,7 +13,7 @@
     urlcolor = cyan
 }
 
-\title{\textbf{Afondamento nas Competencias Profesionais}\\[1em]\textbf{Actividad 1.3 - Arquitectura}\\[1em]Análisis de código: Express API}
+\title{\textbf{Afondamento nas Competencias Profesionais}\\[1em]\textbf{Actividad 1.3 - Arquitectura}\\[1em]Documentación de código: Express API}
 \author{Daniel Calvar Cruz, 2ºCS DAM}
 \date{}
 
@@ -25,19 +25,62 @@
 \tableofcontents
 \newpage
 
+% ==============================
 \section{Descripción general}
 \hyperlink{anchor-indice}{\textbf{Volver}}\\
 
 Es una API basada en el modelo estándar de aplicaciones web, derivado del clásico Vista-Controlador.
 
-Al ser una API pequeña tiene un funcionamiento muy simple, se odupa de llevar a cabo acciones CRUD con una base de datos Mongodb y devolver al frontend los datos pertinentes.
+Al ser una API pequeña tiene un funcionamiento muy simple, se ocupa de llevar a cabo acciones CRUD con una base de datos MongoDB y devolver al frontend los datos pertinentes.
+
+\clearpage
+
+% ==============================
+\section{Información técnica y dependencias}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
 
 
+
+\begin{itemize}
+    \item \textbf{Versión Node.js:} 22.14
+    \item \textbf{Base de datos:} MongoDB Atlas
+    \item \textbf{Dependencias NPM:}
+    \begin{itemize}
+        \item \textbf{cors:} 2.8.5
+        \item \textbf{dotenv:} 16.4.7
+        \item \textbf{express:} 4.21.1
+        \item \textbf{mongodb:} 6.12.0
+        \item \textbf{mongoose:} 8.13.2
+        \item \textbf{nodemon:} 3.1.10  
+    \end{itemize}
+\end{itemize}
+\clearpage
+
+% ==============================
+\section{Configuración}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\subsection{Variables de entorno (.env)}
+\begin{itemize}
+    \item \texttt{MONGO\_URI}: URI de conexión a MongoDB Atlas o local.
+    \item \texttt{PORT}: Puerto en el que se ejecutará el servidor.
+    \item \texttt{DDBB\_NAME}: Nombre de la base de datos en Mongo Atlas.
+\end{itemize}
+
+\subsection{Archivo vercel.json}
+Define la configuración para el despliegue en Vercel, incluyendo las rutas y la carpeta de salida de la API.
+
+\subsection{CORS}
+El middleware \texttt{cors.js} define los dominios permitidos para acceder a la API, garantizando la seguridad y evitando errores de origen cruzado.
+
+\clearpage
+
+% ==============================
 \section{Estructura}
 \hyperlink{anchor-indice}{\textbf{Volver}}\\
 
 \begin{verbatim}
-    ├── api/
+├── api/
 │   ├── config/
 │   │   └── ddbb.js
 │   ├── controllers/
@@ -62,12 +105,11 @@ Al ser una API pequeña tiene un funcionamiento muy simple, se odupa de llevar a
 
 \begin{itemize}
     \item (root) node-modules: paquetes de node.
-    \item (root) package-lock.json: archivo de configuración.
-    \item (root) package.json: archivo de configuración.
-    \item (root) vercel.json: archivo de configuración vercel.
-    \item (api) config: conexión a base de datos.
+    \item (root) package-lock.json / package.json: archivos de configuración.
+    \item (root) vercel.json: configuración de despliegue.
+    \item (api) config: conexión a la base de datos.
     \item (api) middlewares: middlewares del sistema.
-    \item (api) models: interfaces de Mongoose.
+    \item (api) models: esquemas de Mongoose.
     \item (api) routes: rutas de entrada de los endpoints.
     \item (api) controllers: enlaza las rutas de entrada con los servicios.
     \item (api) services: lógica de negocio.
@@ -75,20 +117,73 @@ Al ser una API pequeña tiene un funcionamiento muy simple, se odupa de llevar a
     \item (api root) server: punto de entrada y conexión del servidor.
 \end{itemize}
 
+\clearpage
+
+% ==============================
+\section{Modelo de datos}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+El modelo principal se define en \texttt{models/Module.js} y representa una ficha de personaje.\\
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Campo} & \textbf{Tipo} & \textbf{Descripción} \\
+    \hline
+    nombre & String & Nombre del personaje \\
+    \hline
+    clase & String & Clase o rol del personaje \\
+    \hline
+    HP & Number & Puntos de vida \\
+    \hline
+    indice & Number & Índice interno autogenerado \\
+    \hline
+\end{tabular}\\[1em]
+
+Ejemplo de documento JSON:
+\begin{verbatim}
+{
+  "nombre": "Mustakrakish",
+  "clase": "Trol del lago",
+  "HP": 9999,
+  "indice": 1
+}
+\end{verbatim}
 
 \clearpage
 
+% ==============================
+\section{Arquitectura}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+La API sigue una arquitectura modular basada en el patrón MVC (Modelo–Vista–Controlador).
+
+\begin{itemize}
+    \item \textbf{Rutas:} reciben la petición HTTP y determinan qué controlador usar.
+    \item \textbf{Controladores:} validan y gestionan las peticiones, llamando a los servicios necesarios.
+    \item \textbf{Servicios:} contienen la lógica de negocio y se comunican con la base de datos.
+    \item \textbf{Modelos:} definen la estructura de los datos en MongoDB mediante Mongoose.
+\end{itemize}
+
+Flujo de ejecución de una petición:
+\begin{verbatim}
+Cliente → Ruta → Controlador → Servicio → Modelo (MongoDB) → Respuesta
+\end{verbatim}
+
+\clearpage
+
+% ==============================
 \section{API}
 \hyperlink{anchor-indice}{\textbf{Volver}}\\
 
-\subsection{Endpoints}
+\subsection{Endpoints detallados}
 
+% -------------------------------------------
 \subsubsection{/create}
 Crea una nueva ficha en la base de datos. Crea el índice automáticamente.\\
 
-Tipo: POST\\
+Tipo: \textbf{POST}\\[0.5em]
 
-Body:\\
+\textbf{Body:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -96,13 +191,13 @@ Body:\\
     \hline
     nombre & String & Nombre del personaje de la ficha\\ 
     \hline
-    clase & String & Nombre la clase del personaje de la ficha\\ 
+    clase & String & Clase del personaje de la ficha\\ 
     \hline
-    HP & int & Hit points del personaje de la ficha\\ 
+    HP & int & Puntos de vida del personaje\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
-Respuesta:\\
+\textbf{Respuesta:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -112,14 +207,32 @@ Respuesta:\\
     \hline
     message & String & Mensaje de éxito o fallo\\ 
     \hline
-\end{tabular}
+\end{tabular}\\[1em]
 
+\textbf{Ejemplo completo de uso:}
+\begin{verbatim}
+POST /create
+{
+  "nombre": "Ragnar",
+  "clase": "Guerrero",
+  "HP": 100
+}
+
+Respuesta:
+{
+  "type": "success",
+  "message": "Ficha creada correctamente"
+}
+\end{verbatim}
+
+\FloatBarrier
+% -------------------------------------------
 \subsubsection{/read}
 Devuelve un documento en concreto.\\
 
-Tipo: POST\\
+Tipo: \textbf{POST}\\[0.5em]
 
-Body:\\
+\textbf{Body:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -127,11 +240,11 @@ Body:\\
     \hline
     filtroKey & String & Clave a buscar en base de datos\\ 
     \hline
-    filtroValue & String & Valor que va a buscar usando la clave para recuperar el documento\\ 
+    filtroValue & String & Valor que va a buscar usando la clave\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
-Respuesta:\\
+\textbf{Respuesta:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -141,32 +254,55 @@ Respuesta:\\
     \hline
     message & String & Mensaje de éxito o fallo\\ 
     \hline
-    data & Objeto JSON & Datos del documento encontrado (si lo encuentra)\\ 
+    data & Objeto JSON & Datos del documento encontrado\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
+\textbf{Ejemplo completo de uso:}
+\begin{verbatim}
+POST /read
+{
+  "filtroKey": "nombre",
+  "filtroValue": "Ragnar"
+}
+
+Respuesta:
+{
+  "type": "success",
+  "message": "Documento encontrado",
+  "data": {
+    "nombre": "Ragnar",
+    "clase": "Guerrero",
+    "HP": 100,
+    "indice": 1
+  }
+}
+\end{verbatim}
+
+\FloatBarrier
+% -------------------------------------------
 \subsubsection{/update}
 Modifica un documento en concreto.\\
 
-Tipo: POST\\
+Tipo: \textbf{POST}\\[0.5em]
 
-Body:\\
+\textbf{Body:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
     \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
     \hline
-    indice & int & Indice interno en base de datos de la ficha\\ 
+    indice & int & Índice interno en base de datos de la ficha\\ 
     \hline
-    nombre & String & Nombre del personaje de la ficha\\ 
+    nombre & String & Nombre del personaje\\ 
     \hline
-    clase & String & Nombre la clase del personaje de la ficha\\ 
+    clase & String & Clase del personaje\\ 
     \hline
-    HP & int & Hit points del personaje de la ficha\\ 
+    HP & int & Puntos de vida del personaje\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
-Respuesta:\\
+\textbf{Respuesta:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -176,24 +312,43 @@ Respuesta:\\
     \hline
     message & String & Mensaje de éxito o fallo\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
+\textbf{Ejemplo completo de uso:}
+\begin{verbatim}
+POST /update
+{
+  "indice": 1,
+  "nombre": "Ragnar",
+  "clase": "Berserker",
+  "HP": 130
+}
+
+Respuesta:
+{
+  "type": "success",
+  "message": "Ficha actualizada correctamente"
+}
+\end{verbatim}
+
+\FloatBarrier
+% -------------------------------------------
 \subsubsection{/delete}
 Borra un documento en concreto.\\
 
-Tipo: POST\\
+Tipo: \textbf{POST}\\[0.5em]
 
-Body:\\
+\textbf{Body:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
     \textbf{Parámetro} & \textbf{Tipo}  & \textbf{Descripción}\\ 
     \hline
-    indice & int & Indice interno en base de datos de la ficha\\ 
+    indice & int & Índice interno en base de datos de la ficha\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
-Respuesta:\\
+\textbf{Respuesta:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -203,14 +358,30 @@ Respuesta:\\
     \hline
     message & String & Mensaje de éxito o fallo\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
+\textbf{Ejemplo completo de uso:}
+\begin{verbatim}
+POST /delete
+{
+  "indice": 1
+}
+
+Respuesta:
+{
+  "type": "success",
+  "message": "Ficha eliminada correctamente"
+}
+\end{verbatim}
+
+\FloatBarrier
+% -------------------------------------------
 \subsubsection{/readall}
 Devuelve todos los documentos de la base de datos.\\
 
-Tipo: GET\\
+Tipo: \textbf{GET}\\[0.5em]
 
-Respuesta:\\
+\textbf{Respuesta:}\\
 
 \begin{tabular}{|c|c|c|}
     \hline
@@ -220,10 +391,94 @@ Respuesta:\\
     \hline
     message & String & Mensaje de éxito o fallo\\ 
     \hline
-    data & Array de objetos JSON & Lista de todos los documentos de la base de datos (si los encuentra)\\ 
+    data & Array de objetos JSON & Lista de todos los documentos encontrados\\ 
     \hline
-\end{tabular}\\
+\end{tabular}\\[1em]
 
-\subsection{nueva sub section APIS}
+\textbf{Ejemplo completo de uso:}
+\begin{verbatim}
+GET /readall
+
+Respuesta:
+{
+  "type": "success",
+  "message": "Documentos encontrados",
+  "data": [
+    {
+      "nombre": "Ragnar",
+      "clase": "Berserker",
+      "HP": 130,
+      "indice": 1
+    },
+    {
+      "nombre": "Luna",
+      "clase": "Maga",
+      "HP": 80,
+      "indice": 2
+    }
+  ]
+}
+\end{verbatim}
+
+\FloatBarrier
+
+
+\clearpage
+
+% ==============================
+\section{Pruebas}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\begin{itemize}
+    \item Para probar la API localmente:
+    \begin{verbatim}
+    npm run dev
+    \end{verbatim}
+    \item Recomendado usar herramientas como \textbf{Postman} o la extensión de VS Code \textbf{Thunderclient}.
+    \item Ejemplo:
+    \begin{verbatim}
+    POST http://localhost:3000/create \
+    Body '{"nombre":"Luna","clase":"Maga","HP":80}'
+    \end{verbatim}
+    \item Respuesta esperada:
+    \begin{verbatim}
+    {
+      "type": "success",
+      "message": "Ficha creada correctamente"
+    }
+    \end{verbatim}
+\end{itemize}
+
+\clearpage
+
+% ==============================
+\section{Despliegue}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\begin{itemize}
+    \item La API se despliega en \textbf{Vercel}.
+    \item Se usa el archivo \texttt{vercel.json} para definir las rutas y la carpeta raíz.
+    \item Variables de entorno configuradas desde el panel de Vercel.
+    \item Ejemplo de endpoint:
+    \begin{verbatim}
+    https://miapi.vercel.app/api/readall
+    \end{verbatim}
+\end{itemize}
+
+\clearpage
+
+% ==============================
+\section{Futuras mejoras}
+\hyperlink{anchor-indice}{\textbf{Volver}}\\
+
+\begin{itemize}
+    \item Implementar autenticación JWT para proteger endpoints.
+    \item Añadir validación de datos con \texttt{express-validator}.
+    \item Centralizar manejo de errores.
+    \item Incluir tests automatizados (Jest o Mocha).
+    \item Generar documentación interactiva con Swagger.
+\end{itemize}
+
+\clearpage
 
 \end{document}
